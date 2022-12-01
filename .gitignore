@@ -22,3 +22,5 @@ bin/
 
 
 /src/test/java/pairmatching/code/CodeTest.java
+
+.gitignore

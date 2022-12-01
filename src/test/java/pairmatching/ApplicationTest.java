@@ -1,12 +1,18 @@
 package pairmatching;
 
+import static camp.nextstep.edu.missionutils.test.Assertions.assertShuffleTest;
+import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
+import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
+
 import camp.nextstep.edu.missionutils.test.NsTest;
+import java.util.Arrays;
+import org.junit.jupiter.api.Test;
 
 class ApplicationTest extends NsTest {
 
     private static final String ERROR_MESSAGE = "[ERROR]";
 
-   /* @Test
+    @Test
     void 짝수_인원_페어_매칭() {
         assertShuffleTest(
                 () -> {
@@ -25,7 +31,7 @@ class ApplicationTest extends NsTest {
                     assertThat(output()).contains(ERROR_MESSAGE);
                 }
         );
-    }*/
+    }
 
     @Override
     public void runMain() {
