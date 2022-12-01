@@ -23,4 +23,8 @@ bin/
 
 /src/test/java/pairmatching/code/CodeTest.java
 
+<<<<<<< HEAD
 .gitignore
+=======
+.gitignore
+>>>>>>> d08be3e199280ffb39ecdbed0d89002abffebf73
