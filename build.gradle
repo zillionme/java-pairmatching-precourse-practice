@@ -1,7 +1,14 @@
 plugins {
     id 'java'
     id 'jacoco'
+    id 'checkstyle'
 }
+
+checkstyle {
+    maxWarnings = 0 // 규칙이 어긋나는 코드가 하나라도 있을 경우 빌드 fail
+    configFile = file("${rootDir}/config/checkstyle.xml") // 설정 파일 경로 지정
+}
+
 
 jacocoTestReport {
     reports {
@@ -46,7 +53,7 @@ java {
 
 test {
     useJUnitPlatform()
-    jacoco {
+   /* jacoco {
         enabled = true
         destinationFile = file("$buildDir/jacoco/jacoco.exec")
         includes = []
@@ -60,9 +67,18 @@ test {
         address = "localhost"
         port = 6300
         jmx = false
-    }
+    }*/
 }
+task checkstyle(type: Test) {
+    group 'verification'
+    description 'Runs the unit tests with coverage'
 
+    dependsOn(':test',
+            ':checkstyleMain')
+
+    tasks['checkstyleMain'].mustRunAfter(tasks['test'])
+}
+/*
 
 jacocoTestCoverageVerification {
     violationRules {
@@ -79,14 +95,16 @@ jacocoTestCoverageVerification {
             // class A { } 1줄
             // public void method(){} 1줄
             // 내부 빈줄을 제외한 각각 1줄
-            /**
+            */
+/**
              * public class Name{ // 1줄
              *
              *    public void test(){ // 1줄
              *} // 1줄
              *
              *    총 3줄임
-             *}*/
+             *}*//*
+
             limit {
                 counter = 'LINE'
                 value = 'TOTALCOUNT'
@@ -116,6 +134,7 @@ task testCoverage(type: Test) {
             ':jacocoTestReport',
             ':jacocoTestCoverageVerification')
 
+
     tasks['jacocoTestReport'].mustRunAfter(tasks['test'])
     tasks['jacocoTestCoverageVerification'].mustRunAfter(tasks['jacocoTestReport'])
-}
+}*/

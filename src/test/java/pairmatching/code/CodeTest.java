@@ -17,9 +17,7 @@ public class CodeTest {
         // 파라미터 3개 제한
 
         CodeChecker codeChecker = CodeChecker.rules()
-                .limitMethods(5)
                 .limitFields(4)
-                .limitParameters(3)
                 .build();
 
         // when
