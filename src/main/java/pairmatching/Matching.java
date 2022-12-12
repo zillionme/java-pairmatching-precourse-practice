@@ -32,7 +32,6 @@ public class Matching {
         crewNames = Randoms.shuffle(crewNames);
 
         if(isEvenMember(crewNames)) {
-            matchEvenCrew.
         }
     }
     public boolean isEvenMember(List<String> crewNames) {
