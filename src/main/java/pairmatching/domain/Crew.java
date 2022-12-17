@@ -11,11 +11,6 @@ import java.util.Map;
 public class Crew {
     private Course course;
     private String name;
-
-    public String getName() {
-        return name;
-    }
-
     private Map<Level, List<Crew>> matchingHistory = new HashMap<>();
 
     public Crew(Course course, String name) {
@@ -23,11 +18,15 @@ public class Crew {
         this.name = name;
     }
 
+    public String getName() {
+        return name;
+    }
+
     public boolean isMatchableWith(Level level, List<Crew> otherCrew) {
         List<Crew> matchingHistoryByLevel = matchingHistory.getOrDefault(level, new ArrayList<>());
 
-        for(Crew other : otherCrew) {
-            if(!this.equals(other) && matchingHistoryByLevel.contains(other)){
+        for (Crew other : otherCrew) {
+            if (!this.equals(other) && matchingHistoryByLevel.contains(other)) {
                 return false;
             }
         }
@@ -37,8 +36,8 @@ public class Crew {
     public void addMatchingHistory(Level level, List<Crew> otherCrew) {
         List<Crew> matchingHistoryByLevel = matchingHistory.getOrDefault(level, new ArrayList<>());
 
-        for(Crew other : otherCrew) {
-            if(!this.equals(other)){
+        for (Crew other : otherCrew) {
+            if (!this.equals(other)) {
                 matchingHistoryByLevel.add(other);
                 matchingHistory.put(level, matchingHistoryByLevel);
             }

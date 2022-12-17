@@ -1,6 +1,7 @@
 package pairmatching;
 
 import java.util.Arrays;
+
 import static pairmatching.util.ErrorCode.NOT_VALID_FUNCTION;
 
 public enum Function {
@@ -26,7 +27,6 @@ public enum Function {
     };
     private static final Controller controller = new Controller();
     private final String name;
-    abstract void run();
 
     Function(String name) {
         this.name = name;
@@ -34,9 +34,11 @@ public enum Function {
 
     public static Function getFunctionBy(String input) {
         return Arrays.stream(values())
-                .filter((function)->input.equals(function.name))
+                .filter((function) -> input.equals(function.name))
                 .findFirst()
                 .orElseThrow(NOT_VALID_FUNCTION::throwError);
     }
+
+    abstract void run();
 
 }

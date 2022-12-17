@@ -5,9 +5,7 @@ import pairmatching.contants.Course;
 import pairmatching.contants.Level;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.stream.Collectors;
 
 import static pairmatching.util.ErrorCode.UNABLE_MATCHING;
@@ -40,27 +38,27 @@ public class Matching {
         List<String> crewNames = crewLoader.loadBy(course);
         tries = 0;
 
-        do{
-            if(tries>= 3) {
+        do {
+            if (tries >= 3) {
                 break;
             }
-            List<Crew> crew = getshuffledCrew(course, crewNames);
+            List<Crew> crew = getShuffledCrew(course, crewNames);
             tries++;
 
             matchingList = getMatchingList(crew);
             match(level, matchingList);
-        } while(!isSucceeded);
+        } while (!isSucceeded);
     }
 
     public List<String> getResult() {
-        if(isSucceeded) {
+        if (isSucceeded) {
             return getMatchingResult();
         }
 
         throw UNABLE_MATCHING.throwError();
     }
 
-    public List<Crew> getshuffledCrew(Course course, List<String> crewNames) {
+    public List<Crew> getShuffledCrew(Course course, List<String> crewNames) {
         return Randoms.shuffle(crewNames).stream()
                 .map((crewName) -> new Crew(course, crewName))
                 .collect(Collectors.toList());

@@ -37,7 +37,7 @@ public class Controller {
     }
 
     public void executeFunctionBy(Function function) {
-        if(function.equals(Function.END)){
+        if (function.equals(Function.END)) {
             end();
         }
         function.run();
@@ -58,7 +58,7 @@ public class Controller {
         outputView.printCourseMenu();
         MatchingInfo matchingInfo = getMatchingInfo();
 
-        if(pairProgram.hasMatchingHistory(matchingInfo)) {
+        if (pairProgram.hasMatchingHistory(matchingInfo)) {
             askRematch(matchingInfo);
             return;
         }
@@ -75,7 +75,7 @@ public class Controller {
 
     public void askRematch(MatchingInfo matchingInfo) {
         String rematchCommand = getRematch();
-        if(rematchCommand.equals("아니오")){
+        if (rematchCommand.equals("아니오")) {
             List<String> matchingResult = pairProgram.getMatchingResult(matchingInfo);
             outputView.printMatchingResult(matchingResult);
             return;
@@ -87,6 +87,7 @@ public class Controller {
         List<String> matchingResult = pairProgram.match(matchingInfo);
         outputView.printMatchingResult(matchingResult);
     }
+
     public String getRematch() {
         try {
             return inputView.readRematch();

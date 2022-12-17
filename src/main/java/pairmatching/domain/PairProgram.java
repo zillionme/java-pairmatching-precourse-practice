@@ -19,7 +19,7 @@ public class PairProgram {
         this.matchingRepository = new HashMap<>();
     }
 
-    public List<String> match(MatchingInfo matchingInfo){
+    public List<String> match(MatchingInfo matchingInfo) {
         Course course = matchingInfo.getCourse();
         Level level = matchingInfo.getLevel();
         String mission = matchingInfo.getMission();
@@ -31,7 +31,7 @@ public class PairProgram {
     }
 
     public void updateMatchingRepository(String mission, List<String> matchingResult) {
-       matchingRepository.put(mission, matchingResult);
+        matchingRepository.put(mission, matchingResult);
     }
 
     public List<String> getMatchingResult(MatchingInfo matchingInfo) {
@@ -42,13 +42,13 @@ public class PairProgram {
 
     public boolean hasMatchingHistory(MatchingInfo matchingInfo) {
         String mission = matchingInfo.getMission();
-        if(matchingRepository.containsKey(mission)){
+        if (matchingRepository.containsKey(mission)) {
             return true;
         }
         return false;
     }
 
-    public List<String> lookup(MatchingInfo matchingInfo){
+    public List<String> lookup(MatchingInfo matchingInfo) {
         String mission = matchingInfo.getMission();
         List<String> matchingResult = matchingRepository.getOrDefault(mission, new ArrayList<>());
 
@@ -58,11 +58,11 @@ public class PairProgram {
         return matchingResult;
     }
 
-    public void initiate(){
+    public void initiate() {
         this.matchingRepository = new HashMap<>();
     }
 
-    public void end(){
+    public void end() {
         this.isRunning = false;
     }
 

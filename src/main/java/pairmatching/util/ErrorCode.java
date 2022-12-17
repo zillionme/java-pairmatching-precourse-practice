@@ -11,7 +11,7 @@ public enum ErrorCode {
     NOT_VALID_REMATCH("네, 아니오로 입력해주세요."),
     NOT_HAS_HISTORY("매칭 이력이 없습니다.");
 
-    private static final String ERROR_BEGIN ="[ERROR] ";
+    private static final String ERROR_BEGIN = "[ERROR] ";
     private final String errorMessage;
 
     ErrorCode(String errorMessage) {

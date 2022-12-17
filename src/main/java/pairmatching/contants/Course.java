@@ -18,7 +18,7 @@ public enum Course {
 
     public static Course getCourseBy(String input) {
         return Arrays.stream(values())
-                .filter((course)->course.name.equals(input))
+                .filter((course) -> course.name.equals(input))
                 .findFirst()
                 .orElseThrow(NOT_VALID_COURSE::throwError);
     }
